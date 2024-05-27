@@ -43,8 +43,8 @@ void byte_vec_push(byte_vec *vec, char byte) {
 		}
 	}
 	
-	vec->size++;
 	vec->data[vec->size] = byte;
+	vec->size++;
 }
 
 int len_utf8_sym(char byte) {
