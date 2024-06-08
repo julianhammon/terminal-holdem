@@ -4,6 +4,7 @@
 #include <errno.h>
 #include <termios.h>
 #include <ctype.h>
+#include "string.h"
 
 struct termios orig_attr;
 
@@ -34,6 +35,17 @@ void enable_raw_mode() {
 
 int main() {
 	enable_raw_mode();
+
+	String *str = new_string_from_source("Hello, world", 12);
+	printf("ptr: %p, len: %ld, cap: %ld\r\n", str->ptr, str->len, str->cap);
+	string_push(str, '!');
+	printf("ptr: %p, len: %ld, cap: %ld\r\n", str->ptr, str->len, str->cap);
+	string_push(str, '\r');
+	printf("ptr: %p, len: %ld, cap: %ld\r\n", str->ptr, str->len, str->cap);
+	string_push(str, '\n');
+	printf("ptr: %p, len: %ld, cap: %ld\r\n", str->ptr, str->len, str->cap);
+
+	printf("%s", str->ptr);
 
 	while (1) {
 		unsigned char c = '\0';

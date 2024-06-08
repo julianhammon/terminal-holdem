@@ -63,5 +63,5 @@ void string_push(String *str, char chr) {
         }
     }
     
-    str->ptr[str->len++];
+    str->ptr[str->len++] = chr;
 }
