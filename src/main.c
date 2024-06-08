@@ -25,7 +25,7 @@ void enable_raw_mode() {
 
 	raw.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON);
 	raw.c_oflag &= ~(OPOST);
-	raw.c_cflag |= (CS8 );
+	raw.c_cflag |= (CS8);
 	raw.c_lflag &= ~(ECHO | ICANON | IEXTEN | ISIG);
 	raw.c_cc[VMIN] = 0;
 	raw.c_cc[VTIME] = 1;
@@ -46,6 +46,8 @@ int main() {
 	printf("ptr: %p, len: %ld, cap: %ld\r\n", str->ptr, str->len, str->cap);
 
 	printf("%s", str->ptr);
+
+	string_free(str);
 
 	while (1) {
 		unsigned char c = '\0';
@@ -68,5 +70,5 @@ int main() {
 		}
 	}
 
-return 0;
+	return 0;
 }
