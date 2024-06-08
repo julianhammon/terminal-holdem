@@ -10,3 +10,5 @@ String *new_string();
 String *new_string_with_capacity(size_t cap);
 String *new_string_from_source(char *ptr, size_t len);
 void string_free(String *str);
+
+void string_push(String *str, char chr);

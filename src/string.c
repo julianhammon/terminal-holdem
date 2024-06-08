@@ -50,3 +50,18 @@ void string_free(String *str) {
     free(str->ptr);
     free(str);
 }
+
+void string_push(String *str, char chr) {
+    if (str->cap == str->len) {
+        if (str->cap == 0) {
+            str->cap = 8;
+        }
+        str->cap *= 2;
+        str->ptr = realloc(str->ptr, str->cap);
+        if (str->ptr == NULL) {
+            exit(1);
+        }
+    }
+    
+    str->ptr[str->len++];
+}
